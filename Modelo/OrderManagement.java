@@ -86,8 +86,8 @@ public class OrderManagement implements IViewManagement<Customer, Product>{
                 if(current == null){
                     customerList.remove(current);
                     customerList.add(current);
-                    customerList.remove(current);
-                    customerList.add(current);
+                    productList.remove(prod);
+                    productList.add(prod);
                 }
             }
         }
