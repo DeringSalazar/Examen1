@@ -15,8 +15,13 @@ public class Product {
         this.price = price;
     }
 
+    public Product(int id, String description) {
+        this(id, description, 0.0);
+    }
+    
+
     public Product(int id) {
-        this(id,"", 0.0);
+        this(id,"");
     }
 
     public Product() {
