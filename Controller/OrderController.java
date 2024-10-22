@@ -4,37 +4,49 @@
  */
 package Controller;
 
-import java.util.List;
+import Modelo.Customer;
+import Modelo.IViewManagement;
+import Modelo.Product;
+import View.IView;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Student
  */
-public class OrderController implements IController {
+public class OrderController extends Thread {
 
-    @Override
-    public boolean add(Object element) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    IView view;
+    IViewManagement model;
 
-    @Override
-    public Object get(Object element) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public OrderController(IView view, IViewManagement model) {
+        this.view = view;
+        this.model = model;
     }
-
-    @Override
-    public boolean remove(Object elemet) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public void add(int id, String name, String phone, int idProd, String description, int cantidad){
+        Customer customer;
+        Product prod = null;
+        
+        if (phone != null) {
+            customer = new Customer(id, name);
+        }else{
+            customer = new Customer(id, name, phone);
+        }
+        if (prod != null) {
+            prod = new Product(id, description, cantidad);
+        }
+        if(model.add(customer, name)){
+            view.showMessage("Se agrego correctamente un pedido");
+        }else{
+            view.showMessageError("No se agrego el pedido del cliente");
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
-    @Override
-    public Object set(Object element) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
- 
+    
 }

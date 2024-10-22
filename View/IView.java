@@ -16,6 +16,6 @@ public interface IView {
     public void delete();
     public void display();
     public void displayAll();
-    public void showMessage();
-    public void showMessageError();
+    public void showMessage(String str);
+    public void showMessageError(String str);
 }
