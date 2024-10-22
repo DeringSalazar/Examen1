@@ -8,13 +8,13 @@ package Modelo;
  *
  * @author Student
  */
-public class Order {
+public class Order extends State {
     Customer customer;
     Product product;
     int cant;
-    boolean status;
+    String status;
 
-    public Order(Customer customer, Product product, int cant, boolean status) {
+    public Order(Customer customer, Product product, int cant, String status) {
         this.customer = customer;
         this.product = product;
         this.cant = cant;
@@ -25,7 +25,7 @@ public class Order {
         this.customer = customer;
         this.product = product;
         this.cant = cant;
-        this.status = false;
+        this.status = "";
     }
 
     public Customer getCustomer() {
@@ -52,16 +52,25 @@ public class Order {
         this.cant = cant;
     }
 
-    public boolean isStatus() {
-        return status;
+    @Override
+    public String onDisable() {
+        return status = "Cancelado";
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    @Override
+    public String onPending() {
+        return status = "Pendiente";
     }
-    
-    
-    
+
+    @Override
+    public String onReady() {
+        return status = "Listo";
+    }
+
+    @Override
+    public String onDeliver() {
+        return status = "Entregado";
+    }
 }
         
 
