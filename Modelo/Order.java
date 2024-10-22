@@ -68,7 +68,7 @@ public class Order extends State {
     }
 
     @Override
-    public String onDeliver() {
+    public String onDelivered() {
         return status = "Entregado";
     }
 }

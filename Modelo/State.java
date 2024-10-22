@@ -18,6 +18,6 @@ public abstract class State {
     public abstract String onPending();
     public abstract String onDisable();
     public abstract String onReady();
-    public abstract String onDeliver();
+    public abstract String onDelivered();
     
 }
