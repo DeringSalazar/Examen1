@@ -10,10 +10,10 @@ import java.util.List;
  *
  * @author Student
  */
-public interface IViewManagement <T>{
-    public boolean add(T element);
-    public T get(T element);
-    public boolean remove(T elemet);
-    public T set(T element);
+public interface IViewManagement <Customer, Product>{
+    public boolean add(Customer element, Product eleme);
+    public Product get(Customer element, Product eleme);
+    public boolean remove(Customer element, Product eleme);
+    public Product set(Customer element, Product eleme);
     public List getAll();
 }
